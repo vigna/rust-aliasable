@@ -15,6 +15,11 @@ pub use alloc::string::String as UniqueString;
 pub struct AliasableString(AliasableVec<u8>);
 
 impl AliasableString {
+    /// Returns the number of bytes the string can hold without reallocating.
+    pub fn capacity(&self) -> usize {
+        self.0.capacity()
+    }
+
     /// Consumes `self` into an [`AliasableVec`] of UTF-8 bytes.
     pub fn into_bytes(self) -> AliasableVec<u8> {
         self.0
